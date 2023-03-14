@@ -34,14 +34,22 @@
       <button @click="showProgress = !showProgress" class="text-sm underline mb-6 text-pink-500">Progress
         v.0.1</button>
       <Progress v-show="showProgress" :current="80" :max="100" show-percentage />
+    </div>
 
+    <!-- Meal card -->
+    <div class="py-4">
+      <button @click="showMealCard = !showMealCard" class="text-sm underline mb-6 text-pink-500">Meal card
+        v.0.1</button>
+
+      <MealCard v-show="showMealCard" size="md" :macros="{ carbs: 120, fat: 23, protein: 13 }" meal-name="Chicken bread" :amount="100"
+        brand="Los pollos hermanos" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import macroDistributionMock from '~~/components/__mock__/macro-distribution';
-import bodyProfileList from '~~/components/__mock__/body-profile-list';
+import macroDistributionMock from '../__mock__/macro-distribution';
+import bodyProfileList from '../__mock__/body-profile-list';
 
 
 interface MacroGoal {
@@ -50,12 +58,12 @@ interface MacroGoal {
   max: number;
 }
 const dailyDistribution = ref(macroDistributionMock as MacroGoal[]);
-const showMacrosCard = ref(true);
-const showProfileList = ref(true);
-const showProgramSelection = ref(true);
-const showCalorieCounter = ref(true);
-const showProgress = ref(true);
-
+const showMacrosCard = ref(false);
+const showProfileList = ref(false);
+const showProgramSelection = ref(false);
+const showCalorieCounter = ref(false);
+const showProgress = ref(false);
+const showMealCard = ref(false);
 
 
 </script>
