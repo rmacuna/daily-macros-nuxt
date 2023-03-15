@@ -44,6 +44,15 @@
       <MealCard v-show="showMealCard" size="md" :macros="{ carbs: 120, fat: 23, protein: 13 }" meal-name="Chicken bread" :amount="100"
         brand="Los pollos hermanos" />
     </div>
+
+     <!-- Tabs card -->
+     <div class="py-4">
+      <button @click="showTabs = !showTabs" class="text-sm underline mb-6 text-pink-500">Tabs v.0.1</button>
+      <Tabs>
+        <TabsTab title="Macros">Macros</TabsTab>
+        <TabsTab title="Nutrients">Nutrients</TabsTab>
+      </Tabs>
+    </div>
   </div>
 </template>
 
@@ -64,6 +73,7 @@ const showProgramSelection = ref(false);
 const showCalorieCounter = ref(false);
 const showProgress = ref(false);
 const showMealCard = ref(false);
+const showTabs = ref(false);
 
 
 </script>
