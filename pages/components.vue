@@ -1,68 +1,134 @@
 <template>
   <div class="max-w-7xl mx-auto">
-
     <!-- Macros Card -->
     <div class="py-4">
-      <button @click="showMacrosCard = !showMacrosCard" class="text-sm underline   text-pink-500">Macro Card
-        v.0.1</button>
-      <MacrosCard v-show="showMacrosCard" :daily-distribution="dailyDistribution" />
+      <button
+        @click="showMacrosCard = !showMacrosCard"
+        class="text-sm underline text-pink-500"
+      >
+        Macro Card v.0.1
+      </button>
+      <MacrosCard
+        v-show="showMacrosCard"
+        :daily-distribution="dailyDistribution"
+      />
     </div>
 
     <!-- BodyProfileList -->
     <div class="py-4">
-      <button @click="showProfileList = !showProfileList" class="text-sm underline  text-pink-500">Body profile list
-        v.0.1</button>
-      <BodyProfileList v-show="showProfileList" :body-profile-list="bodyProfileList" />
+      <button
+        @click="showProfileList = !showProfileList"
+        class="text-sm underline text-pink-500"
+      >
+        Body profile list v.0.1
+      </button>
+      <BodyProfileList
+        v-show="showProfileList"
+        :body-profile-list="bodyProfileList"
+      />
     </div>
 
     <!-- Program selection -->
     <div class="py-4">
-      <button @click="showProgramSelection = !showProgramSelection" class="text-sm underline text-pink-500">Program
-        selection v.0.1 </button>
+      <button
+        @click="showProgramSelection = !showProgramSelection"
+        class="text-sm underline text-pink-500"
+      >
+        Program selection v.0.1
+      </button>
       <ProgramSelection v-show="showProgramSelection" name="Roberto" />
     </div>
 
     <!-- Calorie counter -->
     <div class="py-4">
-      <button @click="showCalorieCounter = !showCalorieCounter" class="text-sm underline text-pink-500">Calorie counter
-        v.0.1</button>
-      <CalorieCounter v-show="showCalorieCounter" :total="1280" :target-calories="2000" />
+      <button
+        @click="showCalorieCounter = !showCalorieCounter"
+        class="text-sm underline text-pink-500"
+      >
+        Calorie counter v.0.1
+      </button>
+      <CalorieCounter
+        v-show="showCalorieCounter"
+        :total="1280"
+        :target-calories="2000"
+      />
     </div>
 
     <!-- Progress  -->
     <div class="py-4">
-      <button @click="showProgress = !showProgress" class="text-sm underline mb-6 text-pink-500">Progress
-        v.0.1</button>
-      <Progress v-show="showProgress" :current="80" :max="100" show-percentage />
+      <button
+        @click="showProgress = !showProgress"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Progress v.0.1
+      </button>
+      <Progress
+        v-show="showProgress"
+        :current="80"
+        :max="100"
+        show-percentage
+      />
     </div>
 
     <!-- Meal card -->
     <div class="py-4">
-      <button @click="showMealCard = !showMealCard" class="text-sm underline mb-6 text-pink-500">Meal card
-        v.0.1</button>
+      <button
+        @click="showMealCard = !showMealCard"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Meal card v.0.1
+      </button>
 
-      <MealCard v-show="showMealCard" size="md" :macros="{ carbs: 120, fat: 23, protein: 13 }" meal-name="Chicken bread" :amount="100"
-        brand="Los pollos hermanos" />
+      <MealCard
+        v-show="showMealCard"
+        size="md"
+        :macros="{ carbs: 120, fat: 23, protein: 13 }"
+        meal-name="Chicken bread"
+        :amount="100"
+        brand="Los pollos hermanos"
+      />
     </div>
 
-     <!-- Tabs card -->
-     <div class="py-4">
-      <button @click="showTabs = !showTabs" class="text-sm underline mb-6 text-pink-500">Tabs v.0.1</button>
-      <Tabs>
+    <!-- Tabs card -->
+    <div class="py-4">
+      <button
+        @click="showTabs = !showTabs"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Tabs v.0.1
+      </button>
+      <Tabs v-show="showTabs">
         <TabsTab title="Macros">Macros</TabsTab>
         <TabsTab title="Nutrients">Nutrients</TabsTab>
       </Tabs>
+    </div>
+
+    <div class="py-4">
+      <button
+        @click="showButtonModal = !showButtonModal"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Modal v.0.1
+      </button>
+
+      <div v-show="showButtonModal" class="flex flex-col">
+        <Button @click="modalOpen = true">Open modal</Button>
+        <Modal @modal-close="modalOpen = false" :open="modalOpen">
+          <div class="p-4">
+            <h1>Modal v.0.1</h1>
+          </div>
+        </Modal>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import macroDistributionMock from '../__mock__/macro-distribution';
-import bodyProfileList from '../__mock__/body-profile-list';
-
+import macroDistributionMock from "../__mock__/macro-distribution";
+import bodyProfileList from "../__mock__/body-profile-list";
 
 interface MacroGoal {
-  macro: 'carbs' | 'protein' | 'fat';
+  macro: "carbs" | "protein" | "fat";
   qty: number;
   max: number;
 }
@@ -74,6 +140,7 @@ const showCalorieCounter = ref(false);
 const showProgress = ref(false);
 const showMealCard = ref(false);
 const showTabs = ref(false);
+const showButtonModal = ref(false);
 
-
+const modalOpen = ref(false);
 </script>

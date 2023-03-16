@@ -1,10 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/vue': ^1.7.12
   '@nuxtjs/tailwindcss': ^6.4.1
   nuxt: ^3.2.2
 
 dependencies:
+  '@headlessui/vue': 1.7.12
   '@nuxtjs/tailwindcss': 6.4.1
 
 devDependencies:
@@ -734,6 +736,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@headlessui/vue/1.7.12:
+    resolution: {integrity: sha512-IV0k1I2I8Bj37HljFF231Y9cpldfiucf+inMCxA/VPoQT6UTxo0N/rb78CrogBxXNfsPxKmz3y/nlv+eRz6zvg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.2.0
+    dev: false
 
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
