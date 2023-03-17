@@ -28,7 +28,6 @@ export const getBMR = (person: Omit<Person, "activityLevel">) => {
   if (gender === "male") {
     return parseInt((10 * weight + 6.25 * height - 5 * age + 5).toFixed(0));
   }
-  // Female
   return parseInt((10 * weight + 6.25 * height - 5 * age - 161).toFixed(0));
 };
 
