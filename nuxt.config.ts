@@ -3,5 +3,11 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/tailwindcss"]
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts"],
+  googleFonts: {
+    families: {
+      Lexend: [300,400, 600],
+      Inter: [300, 400, 600, 700],
+    },
+  },
 });

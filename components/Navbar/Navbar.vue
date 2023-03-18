@@ -1,11 +1,12 @@
 <template>
-  <header class="relative flex justify-between items-center">
+  <header class="relative flex justify-between items-center px-4 xl:px-0">
     <div id="app-logo" name="app-logo">
       <span>Logo</span>
     </div>
-    <nav class="flex">
-      <ul role="navigation" name="app-navigation-links" class="list-none flex gap-x-20">
-        <li v-for="link, index in navLinks" :key="index" class="p-1 text-slate-600 cursor-pointer hover:text-slate-900">{{ link }}</li>
+    <nav class="hidden sm:flex">
+      <ul role="navigation" name="app-navigation-links" class="list-none  font-body flex gap-x-20">
+        <li v-for="link, index in navLinks" :key="index" class="p-1 text-slate-600 hover:bg-slate-50 rounded-lg px-4 py-2 transition-colors cursor-pointer hover:text-slate-900">{{
+          link }}</li>
       </ul>
     </nav>
     <div name="actions">
@@ -15,5 +16,5 @@
 </template>
 
 <script setup>
-  const navLinks = ref(['Features', 'Blog', 'Meals', 'Shop']);
+const navLinks = ref(['Features', 'Blog', 'Meals', 'Shop']);
 </script>
