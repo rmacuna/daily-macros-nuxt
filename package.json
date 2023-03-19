@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.12",
+    "@heroicons/vue": "^2.0.16",
     "@nuxtjs/tailwindcss": "^6.6.0"
   }
 }

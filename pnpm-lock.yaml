@@ -2,12 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   '@headlessui/vue': ^1.7.12
+  '@heroicons/vue': ^2.0.16
   '@nuxtjs/google-fonts': ^3.0.0
   '@nuxtjs/tailwindcss': ^6.6.0
   nuxt: ^3.3.1
 
 dependencies:
   '@headlessui/vue': 1.7.12
+  '@heroicons/vue': 2.0.16
   '@nuxtjs/tailwindcss': 6.6.0
 
 devDependencies:
@@ -745,6 +747,12 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       vue: ^3.2.0
+    dev: false
+
+  /@heroicons/vue/2.0.16:
+    resolution: {integrity: sha512-saVAExLlGu6epqmS543qeWd/UOJUxpTJyK9aXeFGqS3VIW8X7yyJQmUGT40A38gBEAxMOdTdH9jFSh8sjPFM7A==}
+    peerDependencies:
+      vue: '>= 3'
     dev: false
 
   /@ioredis/commands/1.2.0:

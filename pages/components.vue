@@ -120,6 +120,18 @@
         </Modal>
       </div>
     </div>
+
+    <div class="py-4">
+      <button
+        @click="showSidebar = !showSidebar"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Sidebar v.0.1
+      </button>
+      <div v-show="showSidebar" class="w-72">
+        <Sidebar />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -141,6 +153,6 @@ const showProgress = ref(false);
 const showMealCard = ref(false);
 const showTabs = ref(false);
 const showButtonModal = ref(false);
-
+const showSidebar = ref(false);
 const modalOpen = ref(false);
 </script>
