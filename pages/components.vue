@@ -132,6 +132,18 @@
         <Sidebar />
       </div>
     </div>
+
+    <div class="py-4">
+      <button
+        @click="showHorizontalCalendar = !showHorizontalCalendar"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Horizontal calendar v.0.1
+      </button>
+      <div v-show="showHorizontalCalendar" class="w-full">
+        <HorizontalCalendar />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -155,4 +167,5 @@ const showTabs = ref(false);
 const showButtonModal = ref(false);
 const showSidebar = ref(false);
 const modalOpen = ref(false);
+const showHorizontalCalendar = ref(false);
 </script>
