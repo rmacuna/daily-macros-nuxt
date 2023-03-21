@@ -144,6 +144,18 @@
         <HorizontalCalendar />
       </div>
     </div>
+
+    <div class="py-4">
+      <button
+        @click="showTable = !showTable"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Table v0.1
+      </button>
+      <div v-show="showTable" class="w-full px-2 py-8">
+        <MealsTable meal-name="Breakfast" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -168,4 +180,5 @@ const showButtonModal = ref(false);
 const showSidebar = ref(false);
 const modalOpen = ref(false);
 const showHorizontalCalendar = ref(false);
+const showTable = ref(false);
 </script>
