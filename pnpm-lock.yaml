@@ -5,6 +5,7 @@ specifiers:
   '@heroicons/vue': ^2.0.16
   '@nuxtjs/google-fonts': ^3.0.0
   '@nuxtjs/tailwindcss': ^6.6.0
+  '@tailwindcss/forms': ^0.5.3
   '@types/lodash-es': ^4.17.7
   date-fns: ^2.29.3
   lodash-es: ^4.17.21
@@ -19,6 +20,7 @@ dependencies:
 
 devDependencies:
   '@nuxtjs/google-fonts': 3.0.0
+  '@tailwindcss/forms': 0.5.3
   '@types/lodash-es': 4.17.7
   nuxt: 3.3.1
 
@@ -1257,6 +1259,14 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.19.1
+    dev: true
+
+  /@tailwindcss/forms/0.5.3:
+    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -3477,6 +3487,11 @@ packages:
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
+    dev: true
+
+  /mini-svg-data-uri/1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
     dev: true
 
   /minimatch/3.0.8:

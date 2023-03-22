@@ -5,7 +5,7 @@
     </h1>
 
     
-    <SimpleSelect class="mt-2 text-slate-600" name="program-selection" id="program-selection" :data="basicPrograms" />
+    <SimpleSelect v-model="selectedProgram" class="mt-2 text-slate-600" name="program-selection" id="program-selection" :data="basicPrograms" />
   </div>
 </template>
 
@@ -16,4 +16,5 @@ interface Props {
   name: string;
 }
 defineProps<Props>()
+const selectedProgram = ref("");
 </script>
