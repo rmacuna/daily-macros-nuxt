@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-7xl mx-auto">
     <!-- Macros Card -->
-    <div class="py-4">
+    <div class="py-4 w-80">
       <button
         @click="showMacrosCard = !showMacrosCard"
         class="text-sm underline text-pink-500"
