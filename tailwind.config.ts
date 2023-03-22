@@ -3,7 +3,6 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 export default <Partial<Config>>{
   theme: {
-    plugins: [require("@tailwindcss/forms")],
     extend: {
       fontFamily: {
         heading: ["Lexend", ...defaultTheme.fontFamily.sans],
@@ -14,4 +13,5 @@ export default <Partial<Config>>{
       },
     },
   },
+  plugins: [require("@tailwindcss/forms")],
 };

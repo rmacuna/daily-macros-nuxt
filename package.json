@@ -11,12 +11,13 @@
     "@nuxtjs/google-fonts": "^3.0.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/lodash-es": "^4.17.7",
+    "@types/node": "^18.15.5",
     "nuxt": "^3.3.1"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.12",
     "@heroicons/vue": "^2.0.16",
-    "@nuxtjs/tailwindcss": "^6.6.0",
+    "@nuxtjs/tailwindcss": "^6.6.4",
     "date-fns": "^2.29.3",
     "lodash-es": "^4.17.21"
   }
