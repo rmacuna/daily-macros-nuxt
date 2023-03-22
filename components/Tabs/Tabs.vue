@@ -1,10 +1,10 @@
 
 <template>
   <div class="tabs">
-    <ul class="flex gap-x-3 ">
+    <ul class="flex gap-x-3 font-heading">
       <li v-for="title in tabTitles" :key="title" :class="[
-        selectedTitle === title && 'text-green-700 bg-green-100 ring-offset-2 ring-green-300 hover:ring-green-500 hover:text-green-700',
-        'cursor-pointer relative hover:ring-1 transition-all hover:ring-slate-300 hover:ring-offset-2 hover:text-slate-900 py-2 px-3 text-slate-600 text-sm font-semibold rounded-lg'
+        selectedTitle === title ? 'text-green-700  font-heading bg-green-100 ring-offset-2 ring-green-300 hover:ring-offset-4' : 'hover:text-slate-900 text-slate-600 hover:bg-slate-50',
+        'cursor-pointer relative transition-all py-2 px-3  text-sm rounded-lg'
       ]" @click="handleTabSelected(title)">{{ title }}
 
       </li>

@@ -1,39 +1,35 @@
 <template>
   <div
-    class="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4"
+    class="flex h-screen flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4"
   >
     <div class="flex flex-shrink-0 items-center space-y-5 px-4">
-      <img
-        class="h-8 w-auto"
-        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-        alt="Your Company"
-      />
+      <h1 class="font-heading text-lg">Daily Macros</h1>
     </div>
-    <div class="mt-5 flex flex-grow flex-col">
-      <nav class="flex-1 space-y-1 bg-white" aria-label="Sidebar">
-        <a
+    <div class="mt-5 flex flex-grow flex-col h-full">
+      <nav class="flex-1 space-y-1 bg-white px-4" aria-label="Sidebar">
+        <NuxtLink
           v-for="item in navigation"
           :key="item.name"
-          :href="item.href"
+          :to="item.to"
           :class="[
             item.current
-              ? 'border-indigo-600 font-body bg-indigo-50 text-indigo-600'
+              ? 'border-green-600 bg-green-50 text-green-600'
               : 'border-transparent text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-            'group flex items-center border-l-4 px-3 py-2 text-sm font-medium',
+            'group flex font-heading items-center rounded-lg border-l-4 px-3 py-2 text-sm font-medium',
           ]"
         >
           <component
             :is="item.icon"
             :class="[
               item.current
-                ? 'text-indigo-500'
+                ? 'text-green-500'
                 : 'text-gray-400 group-hover:text-gray-500',
               'mr-3 h-6 w-6 flex-shrink-0',
             ]"
             aria-hidden="true"
           />
           {{ item.name }}
-        </a>
+        </NuxtLink>
       </nav>
     </div>
   </div>
@@ -42,19 +38,18 @@
 <script setup>
 import {
   CalendarIcon,
-  ChartBarIcon,
   FolderIcon,
   HomeIcon,
-  InboxIcon,
   UsersIcon,
 } from "@heroicons/vue/24/outline";
 
+
+const router = useRoute();
+
 const navigation = computed(() => [
-  { name: "Dashboard", icon: HomeIcon, href: "#", current: true },
-  { name: "Team", icon: UsersIcon, href: "#", current: false },
-  { name: "Projects", icon: FolderIcon, href: "#", current: false },
-  { name: "Calendar", icon: CalendarIcon, href: "#", current: false },
-  { name: "Documents", icon: InboxIcon, href: "#", current: false },
-  { name: "Reports", icon: ChartBarIcon, href: "#", current: false },
+  { name: "Meal Tracker", icon: HomeIcon, to: "/counter", current: router.path === '/counter' },
+  { name: "Settings", icon: UsersIcon, to: "/counter/settings", current: router.path === '/counter/settings' },
+  { name: "Food library", icon: FolderIcon, to: "/counter/foods", current: router.path === '/counter/foods' },
+  { name: "Recipies", icon: CalendarIcon, to: "/counter/recipies", current: router.path === '/counter/recipies' },
 ]);
 </script>

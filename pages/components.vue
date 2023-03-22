@@ -98,8 +98,8 @@
         Tabs v.0.1
       </button>
       <Tabs v-show="showTabs">
-        <TabsTab title="Macros">Macros</TabsTab>
-        <TabsTab title="Nutrients">Nutrients</TabsTab>
+        <TabsPanel title="Macros">Macros</TabsPanel>
+        <TabsPanel title="Nutrients">Nutrients</TabsPanel>
       </Tabs>
     </div>
 

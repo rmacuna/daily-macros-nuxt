@@ -21,12 +21,12 @@
   </div>
 
   <div class="mt-8 flow-root">
-    <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="overflow-x-auto">
       <div class="inline-block min-w-full py-2 align-middle">
         <table class="min-w-full divide-y divide-gray-300">
           <thead>
             <tr>
-              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 lg:pl-8">Name
+              <th scope="col" class="py-3.5 pr-3 text-left text-sm font-semibold text-gray-900">Name
               </th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Brand</th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Amount</th>
@@ -41,7 +41,7 @@
           </thead>
           <tbody class="divide-y divide-gray-200 bg-white">
             <tr v-for="meal in mealData" :key="meal.id">
-              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 lg:pl-8">{{ meal.name
+              <td class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">{{ meal.name
               }}</td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ meal.brand }}</td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ meal.amount }}</td>
