@@ -13,7 +13,8 @@
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
       <button type="button"
-        class="block rounded-md bg-green-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
+        class="block rounded-md bg-green-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm 
+          hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
         Add meal
       </button>
     </div>
@@ -49,7 +50,7 @@
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ meal.fat }} g</td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ meal.kcal }}</td>
               <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 lg:pr-8">
-                <button class="w-6 h-6">
+                <button @click="deleteRow(meal.id)" class="w-6 h-6">
                   <XMarkIcon class="w-full h-full text-slate-400 hover:text-slate-900 transition-colors" />
                 </button>
               </td>
@@ -65,7 +66,7 @@
 import { XMarkIcon } from "@heroicons/vue/24/solid";
 
 defineProps(["mealComments", "mealName"]);
-const mealData = [
+const mealData = ref([
   {
     id: "1",
     name: "Chicken bread",
@@ -97,5 +98,11 @@ const mealData = [
     kcal: 110,
   },
   // More people...
-];
+]);
+
+const deleteRow = (rowId) => {
+  mealData.value = mealData.value.filter((el) => el.id !== rowId);
+}
+
+
 </script>
