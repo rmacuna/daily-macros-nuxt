@@ -1,23 +1,17 @@
 <template>
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-base font-semibold leading-6 text-gray-900">
+      <h1 class="text-xl font-heading leading-6 text-gray-900">
         {{ mealName }}
       </h1>
-      <p v-if="mealComments" class="mt-2 text-sm text-gray-700">
+      <p v-if="mealComments" class="mt-2 text-sm font-body text-gray-700">
         {{ mealComments }}
       </p>
-      <span v-else class="mt-2 text-sm text-gray-700">
+      <span v-else class="mt-2 text-sm font-body text-gray-700">
         It seems that you have not added any new meals.
       </span>
     </div>
-    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-      <button type="button"
-        class="block rounded-md bg-green-600 py-2 px-3 text-center text-sm font-semibold text-white shadow-sm 
-          hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
-        Add meal
-      </button>
-    </div>
+
   </div>
 
   <div class="mt-8 flow-root">
@@ -57,13 +51,19 @@
             </tr>
           </tbody>
         </table>
+        <button
+          class="justify-center flex w-full cursor-pointer mt-4 py-3 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+          <span class="text-slate-800 text-sm font-body font-normal tracking-wide">
+            <PlusIcon class="w-6 h-6 text-slate-900" />
+          </span>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { XMarkIcon } from "@heroicons/vue/24/solid";
+import { XMarkIcon, PlusIcon } from "@heroicons/vue/24/solid";
 
 defineProps(["mealComments", "mealName"]);
 const mealData = ref([

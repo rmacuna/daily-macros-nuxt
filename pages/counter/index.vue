@@ -4,7 +4,13 @@
       <HorizontalCalendar />
       <Tabs class="mt-8">
         <TabsPanel title="Meal 1" class="py-4">
-          Breakfast
+          <MealsTable meal-name="Breakfast" />
+
+          <div class="py-4">
+            <h1 class="text-xl text-slate-900 font-heading">Summary</h1>
+            <p class="text-sm font-body text-slate-700">This is what you are consuming here</p>
+
+          </div>
         </TabsPanel>
         <TabsPanel title="Meal 2">
           Dinner
@@ -17,8 +23,12 @@
         </TabsPanel>
       </Tabs>
     </div>
-    
-    <MacrosCard class="col-span-4"  :daily-distribution="distribution" />
+
+    <div class="flex flex-col col-span-4 pl-8">
+      <div class="h-56">
+        <MacrosCard :daily-distribution="distribution" />
+      </div>
+    </div>
   </div>
 </template>
 
