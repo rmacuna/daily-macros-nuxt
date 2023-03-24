@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import getCaloriesFromMacros from '../MealCard/helpers';
-
 interface MacroGoal {
   macro: 'carbs' | 'protein' |'fat';
   qty: number;

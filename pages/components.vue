@@ -156,12 +156,29 @@
         <MealsTable meal-name="Breakfast" />
       </div>
     </div>
+
+    <div class="py-4">
+      <button
+        @click="showCard = !showCard"
+        class="text-sm underline mb-6 text-pink-500"
+      >
+        Card v0.1
+      </button>
+      <div v-show="showCard" class="w-full px-2 py-8">
+        <div class="w-80 h-80">
+          <Card title="Water requirement" description="2000ml or about 8 glass of water">
+            <ChartBarSquareIcon class="w-20 h-20" />
+          </Card>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import macroDistributionMock from "../__mock__/macro-distribution";
 import bodyProfileList from "../__mock__/body-profile-list";
+import { ChartBarSquareIcon } from '@heroicons/vue/24/outline'
 
 interface MacroGoal {
   macro: "carbs" | "protein" | "fat";
@@ -181,4 +198,6 @@ const showSidebar = ref(false);
 const modalOpen = ref(false);
 const showHorizontalCalendar = ref(false);
 const showTable = ref(false);
+const showCard = ref(false);
+
 </script>
