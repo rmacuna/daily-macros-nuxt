@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-screen flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5 pb-4"
+    class="flex h-screen fixed flex-grow flex-col overflow-y-auto bg-white pt-5 pb-4"
   >
     <div class="flex flex-shrink-0 items-center space-y-5 px-4">
       <h1 class="font-heading text-lg">Daily Macros</h1>
@@ -37,7 +37,6 @@
 
 <script setup>
 import {
-  CalendarIcon,
   FolderIcon,
   HomeIcon,
   UsersIcon,

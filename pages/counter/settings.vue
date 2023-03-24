@@ -20,9 +20,9 @@
     <span class="text-gray-500 font-body">Configure your body preferences</span>
 
     <div class="pt-8 flex flex-col gap-y-4">
-      <Input v-model.trim.number="weight" type="text" id="weigh" name="weight" placeholder="Your weight in kg" />
-      <Input v-model.trim.number="age" type="text" id="age" name="age" placeholder="Your age" />
-      <Input v-model.trim.number="height" type="text" id="height" name="height" placeholder="Your height in cm" />
+      <Input v-model.trim.number="weight" :max="300" type="text" id="weigh" name="weight" placeholder="Your weight in kg" />
+      <Input v-model.trim.number="age" :max="200" type="text" id="age" name="age" placeholder="Your age" />
+      <Input v-model.trim.number="height" :max="400" type="text" id="height" name="height" placeholder="Your height in cm" />
       <SimpleSelect v-model="trainingGoals" placeholder="Select a training objective" name="training goals"
         id="trainingObjectives" :data="basicPrograms" />
       <SimpleSelect v-model="activityLevels" placeholder="Select your activity levels" name="activity levels"
@@ -37,9 +37,9 @@ import activityLevelsData from '../../components/constants/activity-levels';
 
 
 // This information should be moved to a global state management solution
-const weight = ref("");
+const weight = ref(0);
 const age = ref("");
-const height = ref("");
+const height = ref(0);
 const trainingGoals = ref("");
 const activityLevels = ref("");
 const calorieTarget = ref(2000);
@@ -94,6 +94,18 @@ watch(weight, (val) => {
     }
     return el;
   })
-})
+});
+
+watch(height, (val) => bodyProfileSummary.value = bodyProfileSummary.value.map((el) => {
+  if (el.name === 'height') {
+    return {
+      name: 'weight',
+      value: val,
+      description: 'In cm'
+    }
+  }
+  return el;
+}))
+
 
 </script>

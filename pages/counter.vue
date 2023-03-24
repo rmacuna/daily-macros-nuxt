@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full h-screen">
     <NuxtLayout name="with-sidebar-layout">
       <template #sidebar>
         <Sidebar />
