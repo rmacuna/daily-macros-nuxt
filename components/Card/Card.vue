@@ -5,7 +5,7 @@
     </figure>
     <div class="flex justify-center items-center flex-col">
       <h1 v-if="title" class="text-lg font-heading text-slate-900">{{ title }}</h1>
-      <p v-if="description" class="text-sm font-body text-gray-500">{{ description }}</p>
+      <p v-if="description" class="text-sm text-center font-body text-gray-500">{{ description }}</p>
     </div>
   </div>
 </template>
