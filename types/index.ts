@@ -19,10 +19,11 @@ export interface Person {
   age: number;
   gender: Gender;
   weight: number;
-  activityLevel: "sedentary" | "light" | "moderate" | "active" | "very active";
+  activityLevels: string;
   neckCm?: number;
   waistCm?: number;
   hipCm?: number;
+  trainingGoals: string;
 }
 
 export interface DialogType {

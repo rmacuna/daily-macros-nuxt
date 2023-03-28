@@ -19,13 +19,17 @@
           <Input v-model.trim.number="weightInput" :max="300" type="text" id="weigh" name="weight"
             placeholder="Your weight in kg" />
           <Input v-model.trim.number="ageInput" :max="200" type="text" id="age" name="age" placeholder="Your age" />
+
           <Input v-model.trim.number="heightInput" :max="400" type="text" id="height" name="height"
             placeholder="Your height in cm" />
+          <SimpleSelect v-model="genderInput" placeholder="Select you gender" id="gender" name="gender" :data="genders" />
           <SimpleSelect v-model="trainingGoalsInput" placeholder="Select a training objective" name="training goals"
             id="trainingObjectives" :data="basicPrograms" />
           <SimpleSelect v-model="activityLevelsInput" placeholder="Select your activity levels" name="activity levels"
             id="activityLevels" :data="activityLevelsData" />
-
+          <Input v-model.trim.number="neckInput" name="Neck (cm)" />
+          <Input v-model.trim.number="waistInput" name="Waist (cm)" />
+          <Input v-model.trim.number="hipsInput" name="Hips (cm)" />
           <div class="flex justify-end py-4">
             <Button @click="saveSettings()" class="px-8">Save</Button>
           </div>
@@ -42,6 +46,7 @@
 import basicPrograms from '../../components/constants/basic-programs';
 import activityLevelsData from '../../components/constants/activity-levels';
 import { useBodyProfileStore } from '~~/stores/useBodyProfileStore';
+import genders from '~~/components/constants/genders';
 
 const bodyProfileStore = useBodyProfileStore();
 const weightInput = ref(bodyProfileStore.bodyProfile.weight);
@@ -49,6 +54,11 @@ const ageInput = ref(bodyProfileStore.bodyProfile.age);
 const heightInput = ref(bodyProfileStore.bodyProfile.height);
 const trainingGoalsInput = ref(bodyProfileStore.bodyProfile.trainingGoals);
 const activityLevelsInput = ref(bodyProfileStore.bodyProfile.activityLevels);
+const genderInput = ref(bodyProfileStore.bodyProfile.gender);
+
+const neckInput = ref(bodyProfileStore.bodyProfile.neckCm);
+const waistInput = ref(bodyProfileStore.bodyProfile.waistCm);
+const hipsInput = ref(bodyProfileStore.bodyProfile.hipCm);
 
 const saveSettings = () => {
   bodyProfileStore.updateBodyProfile({
@@ -56,7 +66,10 @@ const saveSettings = () => {
     age: ageInput,
     height: heightInput,
     trainingGoals: trainingGoalsInput,
-    activityLevels: activityLevelsInput
+    activityLevels: activityLevelsInput,
+    hipCm: hipsInput,
+    waistCm: waistInput,
+    neckCm: neckInput
   })
 }
 

@@ -9,7 +9,7 @@ const basicPrograms = [
   },
   {
     label: 'Maintain weight',
-    value: 'maintainance'
+    value: 'maintenance'
   },
   {
     label: 'Gain Weight',

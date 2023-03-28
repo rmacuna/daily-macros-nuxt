@@ -1,22 +1,37 @@
 import { Gender } from "~~/types";
 
+
+interface BodyProfileProps {
+  age: number;
+  weight: number;
+  height: number,
+  activityLevels: string,
+  trainingGoals: string,
+  gender: Gender;
+  neckCm?: number;
+  waistCm?: number;
+  hipCm?: 127;
+  customDelta?: number
+}
+
 export const useBodyProfileStore = defineStore("bodyProfile", () => {
   const bodyProfile = ref({
     age: 20,
     weight: 55,
     height: 165,
-    activityLevels: "",
-    trainingGoals: "",
+    activityLevels: "moderate",
+    trainingGoals: "maintenance",
     gender: "female" as Gender,
     neckCm: 37,
     waistCm: 90,
     hipCm: 127,
+    customDelta: 0
   });
 
   const { getBMR, getBodyFatPercentage, getCalorieTarget } =
     useBodyCalculations();
 
-  const updateBodyProfile = (newValue) => {
+  const updateBodyProfile = (newValue: BodyProfileProps) => {
     bodyProfile.value = {
       ...bodyProfile.value,
       ...newValue
@@ -25,12 +40,13 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
 
   const bodyBMI = computed(() => {
     const { weight, height } = bodyProfile.value;
-    const bmi = weight / height ** 2;
+    const heightMt = height / 100;
+    const bmi = weight / heightMt ** 2;
     return bmi.toFixed(2);
   });
 
   const calorieTarget = computed(() => {
-    const calorieTarget = getCalorieTarget();
+    const calorieTarget = getCalorieTarget(bodyProfile.value, bodyProfile.value.customDelta)
     return calorieTarget;
   });
 

@@ -8,6 +8,31 @@ enum ActivityFactors {
   VeryActive = 1.9,
 }
 
+export type Objectives =
+  | "lose_weight"
+  | "soft_weight_lose"
+  | "maintenance"
+  | "gain_weight"
+  | "soft_weight_gain";
+
+
+enum ObjectivesFactor {
+  HardGain = 0.2,
+  SoftGain = 0.1,
+  Maintenance = 0,
+  HardLost = -0.2,
+  SoftLost = -0.1,
+}
+
+const goals = {
+  lose_weight: ObjectivesFactor.HardLost,
+  soft_weight_lose: ObjectivesFactor.SoftLost,
+  maintenance: ObjectivesFactor.Maintenance,
+  gain_weight: ObjectivesFactor.HardGain,
+  soft_weight_gain: ObjectivesFactor.SoftGain,
+};
+
+
 const activityFactors: { [key: string]: number } = {
   sedentary: ActivityFactors.Sedentary,
   light: ActivityFactors.Light,
@@ -25,9 +50,9 @@ export type ActivityLevels =
 
 export function useBodyCalculations() {
   const getMaintenanceCalories = (person: Person) => {
-    let BMR: number;
-    const { gender, activityLevel } = person;
-    const activityFactor = activityFactors[activityLevel];
+    let BMR;
+    const { gender, activityLevels } = person;
+    const activityFactor = activityFactors[activityLevels];
 
     if (gender === "male") {
       BMR = getBMR(person);
@@ -38,7 +63,7 @@ export function useBodyCalculations() {
     return parseInt((BMR * activityFactor).toFixed(0));
   };
 
-  const getBMR = (person: Omit<Person, "activityLevel">) => {
+  const getBMR = (person: Pick<Person, "gender" | "age" | "height" | "weight">) => {
     const { gender, age, height, weight } = person;
     if (gender === "male") {
       return parseInt((10 * weight + 6.25 * height - 5 * age + 5).toFixed(0));
@@ -47,7 +72,7 @@ export function useBodyCalculations() {
   };
 
   const getBodyFatPercentage = (
-    person: Omit<Person, "activityLevel" | "age" | "weight">
+    person: Omit<Person, "activityLevels" | "age" | "weight" | "trainingGoals">
   ) => {
     let leanBodyMass;
     const { gender, height, hipCm = 0, neckCm = 0, waistCm = 0 } = person;
@@ -90,14 +115,22 @@ export function useBodyCalculations() {
     return bodyFatPercentage.toFixed(2);
   };
 
-  const getCalorieTarget = () => {}
+  const getCalorieTarget = (person: Person, customDelta?: number) => {
+    const maintenanceCalories = getMaintenanceCalories(person);
+    const target = goals[person.trainingGoals as Objectives];
+    const calorieDelta = maintenanceCalories * target;
 
+    if (customDelta) {
+      return maintenanceCalories + customDelta;
+    }
 
+    return parseInt((maintenanceCalories + calorieDelta).toFixed(0));
+  };
 
 
   return {
-    getBMR, 
-    getBodyFatPercentage, 
+    getBMR,
+    getBodyFatPercentage,
     getMaintenanceCalories,
     getCalorieTarget
   }

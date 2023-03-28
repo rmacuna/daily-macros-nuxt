@@ -5,16 +5,19 @@
     </div>
     <nav class="hidden sm:flex">
       <ul role="navigation" name="app-navigation-links" class="list-none  font-body flex gap-x-20">
-        <li v-for="link, index in navLinks" :key="index" class="p-1 text-slate-600 hover:bg-slate-50 rounded-lg px-4 py-2 transition-colors cursor-pointer hover:text-slate-900">{{
-          link }}</li>
+        <li v-for="link, index in navLinks" :key="index"
+          class="p-1 text-slate-600 hover:bg-slate-50 rounded-lg px-4 py-2 transition-colors cursor-pointer hover:text-slate-900">
+          {{
+            link }}</li>
       </ul>
     </nav>
     <div name="actions">
-      <Button class="bg-slate-900 hover:bg-slate-800 focus-visible:outline-slate-900">Go to app</Button>
+      <Button @click="push('/counter')" class="bg-slate-900 hover:bg-slate-800 focus-visible:outline-slate-900">Go to app</Button>
     </div>
   </header>
 </template>
 
 <script setup>
+const { push } = useRouter();
 const navLinks = ref(['Features', 'Blog', 'Meals', 'Shop']);
 </script>
