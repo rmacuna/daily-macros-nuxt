@@ -20,7 +20,9 @@ const targetCalories = ref(2000); // This will be a global state (Comming from t
   <div class="p-[21px] w-[300px] ring-1 ring-offset-4 ring-slate-200 bg-slate-50 rounded-lg">
     <div class="flex flex-col text-blue-500 mb-4">
       <h2 class="font-semibold font-heading text-2xl text-slate-900">Your goals</h2>
-      <span class="text-slate-500 font-body text-sm p-0 m-0">Macros today</span>
+      <span class="text-slate-500 font-body text-sm p-0 m-0">
+        <slot name="subtitle" />
+      </span>
     </div>
     <div class="flex gap-x-6 justify-between mb-14">
       <MacroItem v-for="{ macro, max, qty } of dailyDistribution" :macro="macro" :qty="qty" :max="max" />

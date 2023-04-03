@@ -8,7 +8,6 @@
       </p>
 
       <div class="my-8">
-
         <div class="grid grid-cols-4 gap-6 col-span-7">
           <Card v-for="n in bodyProfileStore.profileSummary" :title="n.name" :description="n.description">
             <h1 class="font-body font-semibold text-5xl">{{ n.value }}</h1>
@@ -43,8 +42,8 @@
 
 <script setup>
 
-import basicPrograms from '../../components/constants/basic-programs';
-import activityLevelsData from '../../components/constants/activity-levels';
+import basicPrograms from '../../constants/basic-programs';
+import activityLevelsData from '../../constants/activity-levels';
 import { useBodyProfileStore } from '~~/stores/useBodyProfileStore';
 import genders from '~~/components/constants/genders';
 

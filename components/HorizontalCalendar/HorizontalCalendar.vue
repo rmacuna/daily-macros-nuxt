@@ -5,7 +5,7 @@
     </div>
     <div class="flex w-full gap-x-5 justify-center items-center">
       <button
-        class="w-10 h-10 border-none relative flex items-center justify-center outline-none rounded-full ring-1 ring-offset-4 active:bg-slate-300 hover:bg-slate-200 ring-slate-300 bg-slate-50"
+        class="w-8 h-8 border-none relative flex items-center justify-center outline-none rounded-full ring-1 ring-offset-4 active:bg-slate-300 hover:bg-slate-200 ring-slate-300 bg-slate-50"
         @click="decrementRange"
       >
         <ChevronLeftIcon class="text-slate-900 w-5 h-5" />
@@ -19,7 +19,7 @@
         @click="selectedDate = day.date"
       />
       <button
-        class="w-10 h-10 border-none relative flex items-center justify-center outline-none rounded-full ring-1 ring-offset-4 active:bg-slate-300 hover:bg-slate-200 ring-slate-300 bg-slate-50"
+        class="w-8 h-8 border-none relative flex items-center justify-center outline-none rounded-full ring-1 ring-offset-4 active:bg-slate-300 hover:bg-slate-200 ring-slate-300 bg-slate-50"
         @click="incrementRange"
       >
         <ChevronRightIcon class="text-slate-900 w-5 h-5" />

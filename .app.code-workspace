@@ -5,6 +5,7 @@
     }
   ],
   "settings": {
-    "volar.inlayHints.eventArgumentInInlineHandlers": false
+    "volar.inlayHints.eventArgumentInInlineHandlers": false,
+    "tailwind-fold.foldStyle": "QUOTES",
   }
 }

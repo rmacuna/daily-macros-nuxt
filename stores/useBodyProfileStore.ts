@@ -15,6 +15,9 @@ interface BodyProfileProps {
 }
 
 export const useBodyProfileStore = defineStore("bodyProfile", () => {
+  const { getBMR, getBodyFatPercentage, getCalorieTarget, getMacroDistribution } =
+    useBodyCalculations();
+
   const bodyProfile = ref({
     age: 20,
     weight: 55,
@@ -28,14 +31,32 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     customDelta: 0
   });
 
-  const { getBMR, getBodyFatPercentage, getCalorieTarget } =
-    useBodyCalculations();
+  const dailyDistribution = ref({
+    carbs: {
+      consumed: 0,
+      target: 0,
+    },
+    protein: {
+      consumed: 0,
+      target: 0,
+    },
+    fat: {
+      consumed: 0,
+      target: 0,
+    },
+  })
 
   const updateBodyProfile = (newValue: BodyProfileProps) => {
     bodyProfile.value = {
       ...bodyProfile.value,
       ...newValue
     };
+
+    // Recalculate the daily distribution
+    const { carbs, protein, fat } = getMacroDistribution(calorieTarget.value, "Standard");
+    dailyDistribution.value['carbs'].target = carbs;
+    dailyDistribution.value['protein'].target = protein;
+    dailyDistribution.value['fat'].target = fat;
   };
 
   const bodyBMI = computed(() => {
@@ -56,7 +77,8 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     return bmr;
   });
 
-  // Gender in this case is important to calculate with more accuracy the body fat. Even that it's still an aproximation
+  // Gender in this case is important to calculate with more accuracy the body fat. 
+  // Even that it's still an aproximation
   const bodyFat = computed(() => {
     const { gender, height, waistCm, neckCm, hipCm } = bodyProfile.value;
     const bodyFatPercentage = getBodyFatPercentage({
@@ -109,5 +131,5 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     ];
   });
 
-  return { updateBodyProfile, bodyProfile, calorieTarget, profileSummary };
+  return { updateBodyProfile, bodyProfile, calorieTarget, profileSummary, dailyDistribution };
 });

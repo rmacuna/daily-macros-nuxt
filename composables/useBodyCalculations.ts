@@ -8,6 +8,20 @@ enum ActivityFactors {
   VeryActive = 1.9,
 }
 
+enum DietTypes {
+  Keto = "keto",
+  Standard = "standard",
+  Balanced = "balanced",
+  HighProtein = "high_protein",
+  Custom = "custom",
+}
+
+export type MacroDistribution = {
+  carbs: number;
+  protein: number;
+  fat: number;
+}
+
 export type Objectives =
   | "lose_weight"
   | "soft_weight_lose"
@@ -49,6 +63,10 @@ export type ActivityLevels =
   | "very active";
 
 export function useBodyCalculations() {
+
+  
+
+
   const getMaintenanceCalories = (person: Person) => {
     let BMR;
     const { gender, activityLevels } = person;
@@ -127,11 +145,59 @@ export function useBodyCalculations() {
     return parseInt((maintenanceCalories + calorieDelta).toFixed(0));
   };
 
+  /**
+   * This function returns the macro distribution based on the diet type and calorie target
+   * @param calorieTarget 
+   * @param dietType 
+   * @param customDistribution 
+   */
+  const getMacroDistribution = (calorieTarget: number, dietType: DietTypes, customDistribution = {} as MacroDistribution) => {
+    const macroDistribution = {
+      protein: 0,
+      carbs: 0,
+      fat: 0,
+    };
+
+    switch (dietType) {
+      case DietTypes.Balanced:
+        macroDistribution.protein = 0.25 * calorieTarget;
+        macroDistribution.carbs = 0.5 * calorieTarget;
+        macroDistribution.fat = 0.25 * calorieTarget;
+        break;
+      case DietTypes.HighProtein:
+        macroDistribution.protein = 0.4 * calorieTarget;
+        macroDistribution.carbs = 0.4 * calorieTarget;
+        macroDistribution.fat = 0.2 * calorieTarget;
+        break;
+      case DietTypes.Keto:
+        macroDistribution.protein = 0.2 * calorieTarget;
+        macroDistribution.carbs = 0.05 * calorieTarget;
+        macroDistribution.fat = 0.75 * calorieTarget;
+        break;
+      case DietTypes.Standard:
+        macroDistribution.protein = 0.2 * calorieTarget;
+        macroDistribution.carbs = 0.6 * calorieTarget;
+        macroDistribution.fat = 0.2 * calorieTarget;
+        break;
+      case DietTypes.Custom:
+        macroDistribution.protein = customDistribution.protein * calorieTarget;
+        macroDistribution.carbs = customDistribution.carbs * calorieTarget;
+        macroDistribution.fat = customDistribution.fat * calorieTarget;
+        break;
+      default:
+        throw new Error("Invalid diet type specified");
+    }
+
+    return macroDistribution;
+  };
+
+
 
   return {
     getBMR,
     getBodyFatPercentage,
     getMaintenanceCalories,
-    getCalorieTarget
+    getCalorieTarget,
+    getMacroDistribution
   }
 }
