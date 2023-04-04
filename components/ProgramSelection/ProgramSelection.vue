@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import basicPrograms from '../constants/basic-programs';
+import basicPrograms from '../../constants/basic-programs';
 
 interface Props {
   name: string;

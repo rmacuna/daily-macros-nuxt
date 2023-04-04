@@ -31,6 +31,11 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     customDelta: 0
   });
 
+  onMounted(() => {
+    console.log('Execute on run!');
+    getBodyMacroRequirements();
+  })
+
   const dailyDistribution = ref({
     carbs: {
       consumed: 0,
@@ -46,6 +51,13 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     },
   })
 
+  const getBodyMacroRequirements = () => {
+    const { carbs, protein, fat } = getMacroDistribution(calorieTarget.value, DietTypes.Standard);
+    dailyDistribution.value['carbs'].target = carbs;
+    dailyDistribution.value['protein'].target = protein;
+    dailyDistribution.value['fat'].target = fat;
+  }
+
   const updateBodyProfile = (newValue: BodyProfileProps) => {
     bodyProfile.value = {
       ...bodyProfile.value,
@@ -53,10 +65,9 @@ export const useBodyProfileStore = defineStore("bodyProfile", () => {
     };
 
     // Recalculate the daily distribution
-    const { carbs, protein, fat } = getMacroDistribution(calorieTarget.value, "Standard");
-    dailyDistribution.value['carbs'].target = carbs;
-    dailyDistribution.value['protein'].target = protein;
-    dailyDistribution.value['fat'].target = fat;
+    // Diet is hardcoded to standard for now.
+   getBodyMacroRequirements();
+
   };
 
   const bodyBMI = computed(() => {

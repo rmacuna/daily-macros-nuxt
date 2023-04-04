@@ -8,7 +8,7 @@ enum ActivityFactors {
   VeryActive = 1.9,
 }
 
-enum DietTypes {
+export enum DietTypes {
   Keto = "keto",
   Standard = "standard",
   Balanced = "balanced",
@@ -63,10 +63,6 @@ export type ActivityLevels =
   | "very active";
 
 export function useBodyCalculations() {
-
-  
-
-
   const getMaintenanceCalories = (person: Person) => {
     let BMR;
     const { gender, activityLevels } = person;
@@ -158,31 +154,34 @@ export function useBodyCalculations() {
       fat: 0,
     };
 
+ 
+
     switch (dietType) {
       case DietTypes.Balanced:
-        macroDistribution.protein = 0.25 * calorieTarget;
-        macroDistribution.carbs = 0.5 * calorieTarget;
-        macroDistribution.fat = 0.25 * calorieTarget;
+        macroDistribution.protein = Math.floor((0.25 * calorieTarget) / 4);
+        macroDistribution.carbs = Math.floor((0.5 * calorieTarget) / 4);
+        macroDistribution.fat = Math.floor((0.25 * calorieTarget) / 9);
         break;
       case DietTypes.HighProtein:
-        macroDistribution.protein = 0.4 * calorieTarget;
-        macroDistribution.carbs = 0.4 * calorieTarget;
-        macroDistribution.fat = 0.2 * calorieTarget;
+        macroDistribution.protein = Math.floor((0.4 * calorieTarget) / 4);
+        macroDistribution.carbs = Math.floor((0.4 * calorieTarget) / 4);
+        macroDistribution.fat = Math.floor((0.2 * calorieTarget) / 9);
         break;
       case DietTypes.Keto:
-        macroDistribution.protein = 0.2 * calorieTarget;
-        macroDistribution.carbs = 0.05 * calorieTarget;
-        macroDistribution.fat = 0.75 * calorieTarget;
+        macroDistribution.protein = Math.floor((0.2 * calorieTarget) / 4);
+        macroDistribution.carbs = Math.floor((0.05 * calorieTarget) / 4);
+        macroDistribution.fat = Math.floor((0.75 * calorieTarget) / 9);
         break;
       case DietTypes.Standard:
-        macroDistribution.protein = 0.2 * calorieTarget;
-        macroDistribution.carbs = 0.6 * calorieTarget;
-        macroDistribution.fat = 0.2 * calorieTarget;
+        macroDistribution.protein = Math.floor((0.2 * calorieTarget) / 4);
+        macroDistribution.carbs = Math.floor((0.6 * calorieTarget) / 4);
+        macroDistribution.fat = Math.floor((0.2 * calorieTarget) / 9);
         break;
       case DietTypes.Custom:
-        macroDistribution.protein = customDistribution.protein * calorieTarget;
-        macroDistribution.carbs = customDistribution.carbs * calorieTarget;
-        macroDistribution.fat = customDistribution.fat * calorieTarget;
+        // TODO: implement this
+        macroDistribution.protein = (customDistribution.protein * calorieTarget) / 4;
+        macroDistribution.carbs = (customDistribution.carbs * calorieTarget) / 4;
+        macroDistribution.fat = (customDistribution.fat * calorieTarget) / 9;
         break;
       default:
         throw new Error("Invalid diet type specified");

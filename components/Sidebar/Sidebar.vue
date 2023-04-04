@@ -48,7 +48,7 @@ const router = useRoute();
 
 const navigation = computed(() => [
   { name: "Meal Tracker", icon: HomeIcon, to: "/counter", current: router.path === '/counter' },
-  { name: "Settings", icon: UsersIcon, to: "/counter/settings", current: router.path === '/counter/settings' },
+  { name: "Settings", icon: UsersIcon, to: "/counter/settings", current: router.path.includes('/counter/settings') },
   { name: "Food library", icon: FolderIcon, to: "/counter/foods", current: router.path === '/counter/foods' },
   { name: "Recipies", icon: QueueListIcon, to: "/counter/recipies", current: router.path === '/counter/recipies' },
 ]);

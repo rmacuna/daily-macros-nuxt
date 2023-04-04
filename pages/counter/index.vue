@@ -5,11 +5,6 @@
       <Tabs class="mt-8">
         <TabsPanel title="Meal 1" class="py-4">
           <MealsTable meal-name="Breakfast" />
-          <!-- <div class="py-4">
-            <h1 class="text-xl text-slate-900 font-heading">Summary</h1>
-            <p class="text-sm font-body text-slate-700">This is what you are consuming here</p>
-
-          </div> -->
         </TabsPanel>
         <TabsPanel title="Meal 2">
           Dinner
