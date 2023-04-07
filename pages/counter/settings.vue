@@ -5,8 +5,7 @@
       <h1 class="text-2xl font-heading">Settings</h1>
     </div>
 
-
-    <div class="w-full py-4 flex gap-x-4">
+    <div class="w-full pt-4 flex gap-x-4">
       <NuxtLink to="/counter/settings" :class="[
         $route.path === '/counter/settings'
         ? 'text-green-700  bg-green-100 ring-offset-2 ring-green-300 hover:ring-offset-4'
@@ -31,30 +30,7 @@
 
 import { useBodyProfileStore } from '~~/stores/useBodyProfileStore';
 
-
 const bodyProfileStore = useBodyProfileStore();
-// const weightInput = ref(bodyProfileStore.bodyProfile.weight);
-// const ageInput = ref(bodyProfileStore.bodyProfile.age);
-// const heightInput = ref(bodyProfileStore.bodyProfile.height);
-// const trainingGoalsInput = ref(bodyProfileStore.bodyProfile.trainingGoals);
-// const activityLevelsInput = ref(bodyProfileStore.bodyProfile.activityLevels);
-// const genderInput = ref(bodyProfileStore.bodyProfile.gender);
 
-// const neckInput = ref(bodyProfileStore.bodyProfile.neckCm);
-// const waistInput = ref(bodyProfileStore.bodyProfile.waistCm);
-// const hipsInput = ref(bodyProfileStore.bodyProfile.hipCm);
-
-// const saveSettings = () => {
-//   bodyProfileStore.updateBodyProfile({
-//     weight: weightInput,
-//     age: ageInput,
-//     height: heightInput,
-//     trainingGoals: trainingGoalsInput,
-//     activityLevels: activityLevelsInput,
-//     hipCm: hipsInput,
-//     waistCm: waistInput,
-//     neckCm: neckInput
-//   })
-// }
 
 </script>
