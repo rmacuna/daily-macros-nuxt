@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Keto",
+    "value": "keto"
+  },
+  {
+    "label": "Standard",
+    "value": "standard"
+  },
+  {
+    "label": "Balanced",
+    "value": "balanced"
+  },
+  {
+    "label": "High Protein",
+    "value": "highProtein"
+  },
+  {
+    "label": "Custom",
+    "value": "custom"
+  }
+]
